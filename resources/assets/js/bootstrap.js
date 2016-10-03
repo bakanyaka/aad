@@ -1,4 +1,7 @@
 
+window.pace = require('../vendor/pace/pace.min');
+pace.start();
+
 window._ = require('lodash');
 
 /**
@@ -9,6 +12,8 @@ window._ = require('lodash');
 
 window.$ = window.jQuery = require('jquery');
 require('bootstrap-sass');
+require('metismenu');
+require('jquery-slimscroll');
 
 /**
  * Vue is a modern JavaScript library for building interactive web interfaces

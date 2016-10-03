@@ -6,8 +6,7 @@ Homestead.json
 Homestead.yaml
 .env
 ### Laravel template
-vendor/
-node_modules/
+
 
 # Laravel 5 & Lumen specific
 bootstrap/cache/
