@@ -1,68 +1,69 @@
-@extends('layouts.app')
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>INSPINIA - @yield('title') </title>
 
-@section('content')
-<div class="container">
-    <div class="row">
-        <div class="col-md-8 col-md-offset-2">
-            <div class="panel panel-default">
-                <div class="panel-heading">Login</div>
-                <div class="panel-body">
-                    <form class="form-horizontal" role="form" method="POST" action="{{ url('/login') }}">
-                        {{ csrf_field() }}
+    <!-- CSRF Token -->
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 
-                        <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-                            <label for="email" class="col-md-4 control-label">E-Mail Address</label>
+    <!-- Styles -->
+    <link rel="stylesheet" href="css/vendor.css" />
+    <link rel="stylesheet" href="css/app.css" />
 
-                            <div class="col-md-6">
-                                <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" required autofocus>
+    <!-- Scripts -->
+    <script>
+        window.Laravel = <?php echo json_encode([
+                'csrfToken' => csrf_token(),
+        ]); ?>
+    </script>
+</head>
+<body class="gray-bg">
 
-                                @if ($errors->has('email'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('email') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
+<div class="middle-box text-center loginscreen animated fadeInDown">
+    <div>
+        <div>
 
-                        <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
-                            <label for="password" class="col-md-4 control-label">Password</label>
+            <h1 class="logo-name">AAD</h1>
 
-                            <div class="col-md-6">
-                                <input id="password" type="password" class="form-control" name="password" required>
-
-                                @if ($errors->has('password'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('password') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <div class="col-md-6 col-md-offset-4">
-                                <div class="checkbox">
-                                    <label>
-                                        <input type="checkbox" name="remember"> Remember Me
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <div class="col-md-8 col-md-offset-4">
-                                <button type="submit" class="btn btn-primary">
-                                    Login
-                                </button>
-
-                                <a class="btn btn-link" href="{{ url('/password/reset') }}">
-                                    Forgot Your Password?
-                                </a>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </div>
         </div>
+        <h3>Welcome to Arsenal Admin Dashboard</h3>
+        <p>
+            Добро пожаловать в инструментальную панель администритора ОАО МЗ Арсенал
+        </p>
+        <p>Авторизуйтесь, чтобы приступить к работе</p>
+        <form class="m-t" role="form" method="post" action="{{ url('/login') }}">
+            {{ csrf_field() }}
+            <div class="form-group{{ $errors->has('username') ? ' has-error' : '' }}">
+                <input id="username" name="username" type="text" class="form-control" placeholder="Имя пользователя" value="{{ old('username') }}" required>
+            </div>
+            <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
+                <input id="password"  name="password" type="password" class="form-control" placeholder="Пароль" required>
+            </div>
+            <button type="submit" class="btn btn-primary block full-width m-b">Войти</button>
+        </form>
+        @if (count($errors) > 0)
+            @foreach ($errors->all() as $error)
+                <div class="alert alert-danger alert-dismissible">
+                     {{ $error }}
+                </div>
+            @endforeach
+        @endif
+        <p class="m-t">
+            <small>
+                Frontend by <a href="https://wrapbootstrap.com/theme/inspinia-responsive-admin-theme-WB0R5L90S">Inspinia WebApp</a><br>
+                Powered by <a href="https://laravel.com/">Laravel Framework</a><br>
+                &copy; Dmitriy Belyakov 2016
+            </small>
+        </p>
     </div>
 </div>
-@endsection
+
+<script src="js/app.js" type="text/javascript"></script>
+
+@section('scripts')
+@show
+
+</body>
+</html>

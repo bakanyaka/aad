@@ -11,6 +11,18 @@
 |
 */
 
-Route::get('/', 'HomeController@index');
-Auth::routes();
+// Authentication Routes...
+Route::get('login', 'Auth\LoginController@showLoginForm')->name('login');
+Route::post('login', 'Auth\LoginController@login');
+
+// Uses Auth Middleware
+Route::group(['middleware' => 'auth'], function () {
+    Route::get('/', 'HomeController@index');
+    Route::post('logout', 'Auth\LoginController@logout');
+    Route::get('logout', 'Auth\LoginController@logout');
+});
+
+
+
+
 
