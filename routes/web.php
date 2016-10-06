@@ -11,6 +11,8 @@
 |
 */
 
+
+
 // Authentication Routes...
 Route::get('login', 'Auth\LoginController@showLoginForm')->name('login');
 Route::post('login', 'Auth\LoginController@login');
@@ -27,7 +29,9 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('users', 'Ad\AdUsersController@index')->name('users');
 });
 
-
+Route::get('/',  function (App\Repositories\Ad\AdUserRepository $repo) {
+    dd($repo->findByName('Беляков Дмитрий Сергеевич'));
+});
 
 
 
