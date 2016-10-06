@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.app', ['navbarClass' => ' white-bg'])
 
 @section('title', 'Main page')
 
@@ -8,10 +8,10 @@
             <div class="col-lg-12">
                 <div class="text-center m-t-lg">
                     <h1>
-                        Welcome in INSPINIA Laravel Starter Project
+                        Добро пожаловать в Инструментальную Панель Администратора
                     </h1>
                     <small>
-                        It is an application skeleton for a typical web app. You can use it to quickly bootstrap your webapp projects.
+                        В данный момент проект в разработке, когда-нибудь здесь будет что-то полезное.
                     </small>
                 </div>
             </div>

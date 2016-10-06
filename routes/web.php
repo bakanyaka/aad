@@ -17,9 +17,14 @@ Route::post('login', 'Auth\LoginController@login');
 
 // Uses Auth Middleware
 Route::group(['middleware' => 'auth'], function () {
-    Route::get('/', 'HomeController@index');
-    Route::post('logout', 'Auth\LoginController@logout');
-    Route::get('logout', 'Auth\LoginController@logout');
+    // Authentication Logout
+    Route::any('logout', 'Auth\LoginController@logout');
+
+    //Home Page
+    Route::get('/', 'HomeController@index')->name('main');
+
+    //AD Users Routes
+    Route::get('users', 'Ad\AdUsersController@index')->name('users');
 });
 
 
