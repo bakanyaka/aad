@@ -1,15 +1,17 @@
 <?php
 
 
-namespace App\Repositories\Ad;
+namespace App\Repositories;
 
 
-interface IAdUserRepository
+use App\Models\Ad\Department;
+
+interface IUserRepository
 {
     public function findByName($name);
-    public function findByAccount($account);
+    public function getByAccount($account);
     public function findByComputer($computerName);
-    public function findByDepartment($departmentNumber);
+    public function findByDepartment(Department $department);
     public function where($field, $value, $equality = 'defaultEquality');
     public function all();
 }

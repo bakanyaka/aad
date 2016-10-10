@@ -26,5 +26,9 @@ class AppServiceProvider extends ServiceProvider
         if ($this->app->environment() !== 'production') {
             $this->app->register(\Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class);
         }
+
+        $this->app->singleton('App\Repositories\IUserRepository', 'App\Repositories\Ad\AdUserRepository');
+        $this->app->singleton('App\Repositories\IComputerRepository', 'App\Repositories\Ad\AdComputerRepository');
+        $this->app->singleton('App\Repositories\IDepartmentRepository', 'App\Repositories\Ad\AdDepartmentRepository');
     }
 }

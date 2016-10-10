@@ -16,22 +16,19 @@
 // Authentication Routes...
 Route::get('login', 'Auth\LoginController@showLoginForm')->name('login');
 Route::post('login', 'Auth\LoginController@login');
+Route::any('logout', 'Auth\LoginController@logout')->middleware('auth');
 
-// Uses Auth Middleware
-Route::group(['middleware' => 'auth'], function () {
-    // Authentication Logout
-    Route::any('logout', 'Auth\LoginController@logout');
-
+// Uses Auth and Admin Middleware
+Route::group(['middleware' => ['auth','admin']], function () {
     //Home Page
     Route::get('/', 'HomeController@index')->name('main');
-
     //AD Users Routes
     Route::get('users', 'Ad\AdUsersController@index')->name('users');
 });
 
-Route::get('/',  function (App\Repositories\Ad\AdUserRepository $repo) {
-    dd($repo->findByName('Беляков Дмитрий Сергеевич'));
-});
+/*Route::get('/',  function (App\Repositories\Ad\AdUserRepository $userRepo, App\Repositories\Ad\AdDepartmentRepository $depRepo ) {
+    dd($userRepo->findByName('Дмитрий'));
+});*/
 
 
 

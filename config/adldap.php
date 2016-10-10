@@ -2,6 +2,8 @@
 
 return [
 
+    'departments_ou' => ['Users', 'Domain Units'],
+
     /*
     |--------------------------------------------------------------------------
     | Connections
