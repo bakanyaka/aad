@@ -13,10 +13,10 @@ require('./bootstrap');
  * the application, or feel free to tweak this setup for your needs.
  */
 
-Vue.component('example', require('./components/Example.vue'));
+Vue.component('ad-user-list', require('./components/ad-user-list.vue'));
 
 const app = new Vue({
-    el: 'body'
+    el: '#wrapper'
 });
 
 /*
