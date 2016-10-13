@@ -3,7 +3,7 @@
         <div class="row">
             <div class="col-sm-4">
                 <div class="input-group">
-                    <input type="text" v-model="searchText" placeholder="Имя пользовтеля или учетная запись" class="input-sm form-control">
+                    <input type="text" v-model="searchText" v-on:keyup.enter="getUsers" placeholder="Имя пользовтеля или учетная запись" class="input-sm form-control">
                     <span class="input-group-btn">
                         <button type="button" v-on:click="getUsers" class="btn btn-sm btn-primary"> Поиск</button>
                     </span>
@@ -37,9 +37,15 @@
                     <tr is="ad-user-list-item"  v-bind:user="user" v-bind:index="index" v-on:showComputers="onShowComputers"></tr>
                     <tr v-if="user.showcomputers">
                         <td colspan="9">
-                            <li v-for="computer in user.computers">
-                                {{computer}}
-                            </li>
+                            <uL>
+                                <li v-for="computer in user.computers">
+                                    {{computer.name}}
+                                </li>
+                            </uL>
+                            <i v-if="user.loading" class="fa fa-spinner fa-spin fa-2x fa-fw"></i>
+                            <span v-if="!user.loading && user.computers.length == 0">
+                                Компьютеров не найдено
+                            </span>
                         </td>
                     </tr>
                 </template>
@@ -72,18 +78,16 @@
         },
         methods: {
             onShowComputers: function (index) {
-                Vue.set(this.users[index],'showcomputers', true);
-                this.$http.get('computers/search?username=').then((response) => {
-
+                let user = this.users[index];
+                Vue.set(user,'showcomputers', true);
+                Vue.set(user,'loading', true);
+                this.$http.get('computers/search?username=' + user.account).then((response) => {
+                    user.loading = false;
+                    Vue.set(user, 'computers', response.body);
                 });
-
-                console.log(this.users[index]);
-                //this.users[index].showcomputers = true;
-                //this.users[index].computers.push('it-016', 'otd147-01061601');
-
             },
             getUsers: function () {
-                if (!this.searchText) {
+                if (!this.searchText.trim()) {
                     return
                 }
                 this.showTable = false;

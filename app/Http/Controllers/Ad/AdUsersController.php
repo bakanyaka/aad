@@ -30,7 +30,8 @@ class AdUsersController extends Controller
     public function search(Request $request){
         if (!empty($request->input('name'))) {
             $result = $this->users->findByName($request->input('name'));
+            return response()->json($result);
         }
-        return response()->json($result);
+        return response()->json();
     }
 }

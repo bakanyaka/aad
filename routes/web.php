@@ -25,6 +25,7 @@ Route::group(['middleware' => ['auth','admin']], function () {
     //AD Users Routes
     Route::get('users', 'Ad\AdUsersController@index')->name('users');
     Route::get('users/search','Ad\AdUsersController@search');
+    Route::get('computers/search', 'Ad\AdComputersController@search');
 });
 
 /*Route::get('/',  function (App\Repositories\Ad\AdUserRepository $userRepo, App\Repositories\Ad\AdDepartmentRepository $depRepo ) {
