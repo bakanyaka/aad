@@ -3,9 +3,9 @@
         <div class="row">
             <div class="col-sm-4">
                 <div class="input-group">
-                    <input type="text" placeholder="Имя пользовтеля или учетная запись" class="input-sm form-control">
+                    <input type="text" v-model="searchText" placeholder="Имя пользовтеля или учетная запись" class="input-sm form-control">
                     <span class="input-group-btn">
-                        <button type="button" class="btn btn-sm btn-primary"> Поиск</button>
+                        <button type="button" v-on:click="getUsers" class="btn btn-sm btn-primary"> Поиск</button>
                     </span>
                 </div>
             </div>
@@ -17,11 +17,13 @@
             </select>
             </div>
         </div>
-        <div class="table-responsive m-t-lg">
-            <table class="table table-striped">
+        <div class="table-responsive m-t-lg animated fadeIn" v-if="showTable">
+            <table class="table table-striped table-condensed">
                 <thead>
                 <tr>
+                    <th>Cтатус</th>
                     <th>ФИО</th>
+                    <th>E-mail</th>
                     <th>Должность</th>
                     <th>Номер телефона</th>
                     <th>Подразделение</th>
@@ -34,7 +36,7 @@
                 <template v-for="(user, index) in users">
                     <tr is="ad-user-list-item"  v-bind:user="user" v-bind:index="index" v-on:showComputers="onShowComputers"></tr>
                     <tr v-if="user.showcomputers">
-                        <td colspan="7">
+                        <td colspan="9">
                             <li v-for="computer in user.computers">
                                 {{computer}}
                             </li>
@@ -43,6 +45,10 @@
                 </template>
                 </tbody>
             </table>
+        </div>
+        <div v-if="loading" class="text-center m-lg">
+            <i class="fa fa-spinner fa-spin fa-3x fa-fw"></i>
+            <span class="sr-only">Loading...</span>
         </div>
     </div>
 </template>
@@ -53,36 +59,40 @@
         components: {AdUserListItem},
         data () {
             return {
-                users: [{
-                    name: 'Пупкин Василий Иванович',
-                    title: 'Сантехник',
-                    localPhone: '53-27',
-                    cityPhone: '292-4044',
-                    mobilePhone: '+7 (911) 344-00-22',
-                    departmentName: 'Управление канализационных систем',
-                    office: 'Здание 18, 1 этаж, Комната 3',
-                    disabled: false,
-                    showcomputers: false,
-                    computers: []
-                },
-                {
-                    name: 'Иванов Александр Иванович',
-                    title: 'Водопроводчи',
-                    localPhone: '33-27',
-                    cityPhone: '292-4344',
-                    mobilePhone: '+7 (902) 334-00-22',
-                    departmentName: 'Управление канализационных систем',
-                    office: 'Здание 22, 1 этаж, Комната 3',
-                    disabled: false,
-                    showcomputers: false,
-                    computers:[]
-                }]
+                searchText: '',
+                users: [],
+                showTable: false,
+                loading: false
             }
+        },
+        watch: {
+            searchText: _.debounce(function () {
+                    this.getUsers();
+            }, 1000)
         },
         methods: {
             onShowComputers: function (index) {
-                this.users[index].computers.push('it-016', 'otd147-01061601');
-                this.users[index].showcomputers = true
+                Vue.set(this.users[index],'showcomputers', true);
+                this.$http.get('computers/search?username=').then((response) => {
+
+                });
+
+                console.log(this.users[index]);
+                //this.users[index].showcomputers = true;
+                //this.users[index].computers.push('it-016', 'otd147-01061601');
+
+            },
+            getUsers: function () {
+                if (!this.searchText) {
+                    return
+                }
+                this.showTable = false;
+                this.loading = true;
+                this.$http.get('/users/search?name=' + this.searchText).then((response) => {
+                    this.showTable = true;
+                    this.loading = false;
+                    this.users = response.body;
+                })
             }
         }
     }

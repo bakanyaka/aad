@@ -19,6 +19,7 @@ class User
     public $title;
     public $company;
     public $lastLogonDate;
+    public $lastLogonDateUnix;
     public $disabled;
     public $sortWeight;
 }

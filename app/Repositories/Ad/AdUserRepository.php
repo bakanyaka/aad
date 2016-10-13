@@ -6,6 +6,7 @@ namespace App\Repositories\Ad;
 
 use Adldap\Contracts\AdldapInterface;
 use Adldap\Exceptions\ModelNotFoundException;
+use Adldap\Utilities;
 use App\Models\Ad\Department;
 use App\Models\Ad\User;
 use App\Repositories\IUserRepository;
@@ -103,6 +104,9 @@ class AdUserRepository implements IUserRepository
      */
     private function mapAdUserToUser(\Adldap\Models\User $adUser) {
         $user = new User();
+        $unixTime = Utilities::convertWindowsTimeToUnixTime($adUser->getLastLogon());
+        $user->lastLogonDate = new \DateTime(date($adUser->dateFormat, intval($unixTime)));
+        $user->lastLogonDateUnix = intval($unixTime);
         $user->account = $adUser->getAttribute('samaccountname',0);
         $user->name = $adUser->getAttribute('name',0);
         $user->email = $adUser->getAttribute('userprincipalname', 0);
@@ -114,6 +118,7 @@ class AdUserRepository implements IUserRepository
         $user->title = $adUser->getAttribute('title',0);
         $user->company = $adUser->getAttribute('company', 0);
         $user->office = $adUser->getAttribute('physicaldeliveryofficename',0);
+        $user->disabled = (bool)($adUser->getAttribute('useraccountcontrol',0) & 0x2);
         $user->sortWeight = $adUser->hasAttribute('primarytelexnumber') ? $adUser->getAttribute('primarytelexnumber', 0) : 99;
         return $user;
     }

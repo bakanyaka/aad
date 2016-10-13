@@ -1,11 +1,13 @@
 <template>
     <tr>
+        <td><span v-if="user.disabled" class="label label-danger">Отключен</span><span v-else class="label label-primary">Активен</span></td>
         <td>{{user.name}}</td>
+        <td>{{user.email}}</td>
         <td>{{user.title}}</td>
         <td>{{phoneNumber}}</td>
         <td>{{user.departmentName}}</td>
         <td>{{user.office}}</td>
-        <td>{{user.lastLogonDate}}</td>
+        <td>{{lastLogonDate}}</td>
         <td>
             <a v-on:click="emitShowComputers"><i class="fa fa-laptop text-navy fa-lg"></i></a>
             <a href="#"><i class="fa fa-clipboard text-navy m-l-xs fa-lg"></i></a>
@@ -34,7 +36,12 @@
                     phones.push(this.user.mobilePhone)
                 }
                 return phones.join(', ');
+            },
+            lastLogonDate: function () {
+                const lastLogonDate = new Date(this.user.lastLogonDateUnix*1000);
+                return lastLogonDate.toLocaleString('ru-RU',{timezone: 'Europe/Moscow'});
             }
+
         },
         methods: {
             emitShowComputers: function () {
