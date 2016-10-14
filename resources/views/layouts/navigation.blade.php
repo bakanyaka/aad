@@ -28,6 +28,9 @@
             <li class="{{ isActiveRoute('computers') }}">
                 <a href="{{ url('/computers') }}"><i class="fa fa-desktop"></i> <span class="nav-label">Компьютеры</span> </a>
             </li>
+            <li class="{{ isActiveRoute('todo') }}">
+                <a href="{{ url('/todo') }}"><i class="fa fa-check-square-o"></i> <span class="nav-label">Задачи</span> </a>
+            </li>
         </ul>
 
     </div>

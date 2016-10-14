@@ -18,7 +18,7 @@
             </div>
         </div>
         <div class="table-responsive m-t-lg animated fadeIn" v-if="showTable">
-            <table class="table table-striped table-condensed">
+            <table class="table table-striped table-condensed ad-user-table">
                 <thead>
                 <tr>
                     <th>Cтатус</th>
@@ -79,6 +79,9 @@
         methods: {
             onShowComputers: function (index) {
                 let user = this.users[index];
+                if (typeof user.showcomputers !== 'undefined') {
+                    return;
+                }
                 Vue.set(user,'showcomputers', true);
                 Vue.set(user,'loading', true);
                 this.$http.get('computers/search?username=' + user.account).then((response) => {
@@ -101,3 +104,8 @@
         }
     }
 </script>
+<style>
+    .ad-user-table tbody > tr > td {
+        vertical-align: middle;
+    }
+</style>

@@ -8,9 +8,16 @@
         <td>{{user.departmentName}}</td>
         <td>{{user.office}}</td>
         <td>{{lastLogonDate}}</td>
-        <td>
-            <a v-on:click="emitShowComputers"><i class="fa fa-laptop text-navy fa-lg"></i></a>
-            <a href="#"><i class="fa fa-clipboard text-navy m-l-xs fa-lg"></i></a>
+        <td nowrap>
+            <a v-on:click="emitShowComputers" class="btn btn-white" data-toggle="tooltip" data-placement="left" title="Показать компьютеры">
+                <i class="fa fa-laptop text-navy fa-lg"></i>
+            </a>
+            <a href="#" class="btn btn-white" data-toggle="tooltip" data-placement="left" title="Скопировать в буфер">
+                <i class="fa fa-clipboard text-navy fa-lg"></i>
+            </a>
+            <a v-bind:href="'/todo/issues/new?user=' + user.account" class="btn btn-white" data-toggle="tooltip" data-placement="left" title="Создать задачу">
+                <i class="fa fa-check-square-o text-navy fa-lg"></i>
+            </a>
         </td>
     </tr>
 </template>
@@ -20,8 +27,12 @@
         props: ['user','index'],
         data () {
             return {
-                msg: 'Hello world!'
             }
+        },
+        mounted () {
+            this.$nextTick(function () {
+                $('[data-toggle="tooltip"]').tooltip()
+            });
         },
         computed: {
             phoneNumber: function () {
@@ -50,9 +61,3 @@
         }
     }
 </script>
-
-<style>
-    .example {
-        color: red;
-    }
-</style>
