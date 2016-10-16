@@ -3,7 +3,7 @@ namespace PHPSTORM_META {
 
    /**
     * PhpStorm Meta file, to provide autocomplete information for PhpStorm
-    * Generated on 2016-09-29.
+    * Generated on 2016-10-16.
     *
     * @author Barry vd. Heuvel <barryvdh@gmail.com>
     * @see https://github.com/barryvdh/laravel-ide-helper
@@ -38,9 +38,14 @@ namespace PHPSTORM_META {
             'view.engine.resolver' instanceof \Illuminate\View\Engines\EngineResolver,
             'view.finder' instanceof \Illuminate\View\FileViewFinder,
             'view' instanceof \Illuminate\View\Factory,
+            'adldap' instanceof \Adldap\Adldap,
+            'Adldap\Contracts\AdldapInterface' instanceof \Adldap\Adldap,
             'command.ide-helper.generate' instanceof \Barryvdh\LaravelIdeHelper\Console\GeneratorCommand,
             'command.ide-helper.models' instanceof \Barryvdh\LaravelIdeHelper\Console\ModelsCommand,
             'command.ide-helper.meta' instanceof \Barryvdh\LaravelIdeHelper\Console\MetaCommand,
+            'App\Repositories\IUserRepository' instanceof \App\Repositories\Ad\AdUserRepository,
+            'App\Repositories\IComputerRepository' instanceof \App\Repositories\Ad\AdComputerRepository,
+            'App\Repositories\IDepartmentRepository' instanceof \App\Repositories\Ad\AdDepartmentRepository,
             'blade.compiler' instanceof \Illuminate\View\Compilers\BladeCompiler,
             'Illuminate\Broadcasting\BroadcastManager' instanceof \Illuminate\Broadcasting\BroadcastManager,
             'Illuminate\Contracts\Broadcasting\Broadcaster' instanceof \Illuminate\Broadcasting\Broadcasters\LogBroadcaster,
@@ -152,9 +157,14 @@ namespace PHPSTORM_META {
             'view.engine.resolver' instanceof \Illuminate\View\Engines\EngineResolver,
             'view.finder' instanceof \Illuminate\View\FileViewFinder,
             'view' instanceof \Illuminate\View\Factory,
+            'adldap' instanceof \Adldap\Adldap,
+            'Adldap\Contracts\AdldapInterface' instanceof \Adldap\Adldap,
             'command.ide-helper.generate' instanceof \Barryvdh\LaravelIdeHelper\Console\GeneratorCommand,
             'command.ide-helper.models' instanceof \Barryvdh\LaravelIdeHelper\Console\ModelsCommand,
             'command.ide-helper.meta' instanceof \Barryvdh\LaravelIdeHelper\Console\MetaCommand,
+            'App\Repositories\IUserRepository' instanceof \App\Repositories\Ad\AdUserRepository,
+            'App\Repositories\IComputerRepository' instanceof \App\Repositories\Ad\AdComputerRepository,
+            'App\Repositories\IDepartmentRepository' instanceof \App\Repositories\Ad\AdDepartmentRepository,
             'blade.compiler' instanceof \Illuminate\View\Compilers\BladeCompiler,
             'Illuminate\Broadcasting\BroadcastManager' instanceof \Illuminate\Broadcasting\BroadcastManager,
             'Illuminate\Contracts\Broadcasting\Broadcaster' instanceof \Illuminate\Broadcasting\Broadcasters\LogBroadcaster,
@@ -266,9 +276,14 @@ namespace PHPSTORM_META {
             'view.engine.resolver' instanceof \Illuminate\View\Engines\EngineResolver,
             'view.finder' instanceof \Illuminate\View\FileViewFinder,
             'view' instanceof \Illuminate\View\Factory,
+            'adldap' instanceof \Adldap\Adldap,
+            'Adldap\Contracts\AdldapInterface' instanceof \Adldap\Adldap,
             'command.ide-helper.generate' instanceof \Barryvdh\LaravelIdeHelper\Console\GeneratorCommand,
             'command.ide-helper.models' instanceof \Barryvdh\LaravelIdeHelper\Console\ModelsCommand,
             'command.ide-helper.meta' instanceof \Barryvdh\LaravelIdeHelper\Console\MetaCommand,
+            'App\Repositories\IUserRepository' instanceof \App\Repositories\Ad\AdUserRepository,
+            'App\Repositories\IComputerRepository' instanceof \App\Repositories\Ad\AdComputerRepository,
+            'App\Repositories\IDepartmentRepository' instanceof \App\Repositories\Ad\AdDepartmentRepository,
             'blade.compiler' instanceof \Illuminate\View\Compilers\BladeCompiler,
             'Illuminate\Broadcasting\BroadcastManager' instanceof \Illuminate\Broadcasting\BroadcastManager,
             'Illuminate\Contracts\Broadcasting\Broadcaster' instanceof \Illuminate\Broadcasting\Broadcasters\LogBroadcaster,
@@ -380,9 +395,14 @@ namespace PHPSTORM_META {
             'view.engine.resolver' instanceof \Illuminate\View\Engines\EngineResolver,
             'view.finder' instanceof \Illuminate\View\FileViewFinder,
             'view' instanceof \Illuminate\View\Factory,
+            'adldap' instanceof \Adldap\Adldap,
+            'Adldap\Contracts\AdldapInterface' instanceof \Adldap\Adldap,
             'command.ide-helper.generate' instanceof \Barryvdh\LaravelIdeHelper\Console\GeneratorCommand,
             'command.ide-helper.models' instanceof \Barryvdh\LaravelIdeHelper\Console\ModelsCommand,
             'command.ide-helper.meta' instanceof \Barryvdh\LaravelIdeHelper\Console\MetaCommand,
+            'App\Repositories\IUserRepository' instanceof \App\Repositories\Ad\AdUserRepository,
+            'App\Repositories\IComputerRepository' instanceof \App\Repositories\Ad\AdComputerRepository,
+            'App\Repositories\IDepartmentRepository' instanceof \App\Repositories\Ad\AdDepartmentRepository,
             'blade.compiler' instanceof \Illuminate\View\Compilers\BladeCompiler,
             'Illuminate\Broadcasting\BroadcastManager' instanceof \Illuminate\Broadcasting\BroadcastManager,
             'Illuminate\Contracts\Broadcasting\Broadcaster' instanceof \Illuminate\Broadcasting\Broadcasters\LogBroadcaster,

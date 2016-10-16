@@ -15,7 +15,7 @@
             <a href="#" class="btn btn-white" data-toggle="tooltip" data-placement="left" title="Скопировать в буфер">
                 <i class="fa fa-clipboard text-navy fa-lg"></i>
             </a>
-            <a v-bind:href="'/todo/issues/new?user=' + user.account" class="btn btn-white" data-toggle="tooltip" data-placement="left" title="Создать задачу">
+            <a v-bind:href="'/todo/issues/new?username=' + user.account" class="btn btn-white" data-toggle="tooltip" data-placement="left" title="Создать задачу">
                 <i class="fa fa-check-square-o text-navy fa-lg"></i>
             </a>
         </td>

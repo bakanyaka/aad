@@ -26,6 +26,9 @@ Route::group(['middleware' => ['auth','admin']], function () {
     Route::get('users', 'Ad\AdUsersController@index')->name('users');
     Route::get('users/search','Ad\AdUsersController@search');
     Route::get('computers/search', 'Ad\AdComputersController@search');
+    //Redmine Routes
+    Route::get('todo/issues/new', 'Todo\TodoIssuesController@create');
+    Route::post('todo/issues/new', 'Todo\TodoIssuesController@store');
 });
 
 /*Route::get('/',  function (App\Repositories\Ad\AdUserRepository $userRepo, App\Repositories\Ad\AdDepartmentRepository $depRepo ) {

@@ -1,7 +1,7 @@
 <?php
 /**
  * A helper file for Laravel 5, to provide autocomplete information to your IDE
- * Generated for Laravel 5.3.11 on 2016-09-29.
+ * Generated for Laravel 5.3.18 on 2016-10-16.
  *
  * @author Barry vd. Heuvel <barryvdh@gmail.com>
  * @see https://github.com/barryvdh/laravel-ide-helper
@@ -6761,8 +6761,8 @@ namespace {
          * @return void 
          * @static 
          */
-        public static function sendNow($notifiables, $notification){
-            \Illuminate\Notifications\ChannelManager::sendNow($notifiables, $notification);
+        public static function sendNow($notifiables, $notification, $channels = null){
+            \Illuminate\Notifications\ChannelManager::sendNow($notifiables, $notification, $channels);
         }
         
         /**
@@ -11835,6 +11835,84 @@ namespace {
          */
         public static function getNames(){
             return \Illuminate\View\Factory::getNames();
+        }
+        
+    }
+
+
+    class Adldap extends \Adldap\Laravel\Facades\Adldap{
+        
+        /**
+         * Returns the current manager instance.
+         *
+         * @return \Adldap\Contracts\ManagerInterface 
+         * @static 
+         */
+        public static function getManager(){
+            return \Adldap\Adldap::getManager();
+        }
+        
+        /**
+         * Sets the connection manager.
+         *
+         * @param \Adldap\Contracts\ManagerInterface $manager
+         * @static 
+         */
+        public static function setManager($manager){
+            return \Adldap\Adldap::setManager($manager);
+        }
+        
+        /**
+         * Adds a provider to the connection Manager.
+         *
+         * @param string $name
+         * @param \Adldap\Contracts\ProviderInterface $provider
+         * @return \Adldap\Contracts\ProviderInterface 
+         * @static 
+         */
+        public static function addProvider($name, $provider){
+            return \Adldap\Adldap::addProvider($name, $provider);
+        }
+        
+        /**
+         * Retrieves a provider from the connection Manager.
+         *
+         * @param string $name
+         * @throws \Adldap\Exceptions\AdldapException
+         * @return \Adldap\Contracts\ProviderInterface 
+         * @static 
+         */
+        public static function getProvider($name){
+            return \Adldap\Adldap::getProvider($name);
+        }
+        
+        /**
+         * Retrieves the default provider from the connection Manager.
+         *
+         * @throws \Adldap\Exceptions\AdldapException
+         * @return \Adldap\Contracts\ProviderInterface 
+         * @static 
+         */
+        public static function getDefaultProvider(){
+            return \Adldap\Adldap::getDefaultProvider();
+        }
+        
+        /**
+         * Connects and binds to the configured LDAP server.
+         * 
+         * Returns a new connection Manager instance on success.
+         *
+         * @param string $connection
+         * @param string|null $username
+         * @param string|null $password
+         * @throws \Adldap\Exceptions\ConnectionException
+         * @throws \Adldap\Exceptions\Auth\BindException
+         * @throws \Adldap\Exceptions\AdldapException
+         * @return \Adldap\Contracts\Connections\ProviderInterface 
+         * @static 
+         */
+        public static function connect($connection, $username = null, $password = null){
+            return \Adldap\Adldap::connect($connection, $username, $password);
         }
         
     }

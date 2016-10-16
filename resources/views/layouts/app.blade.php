@@ -9,8 +9,8 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <!-- Styles -->
-    <link rel="stylesheet" href="css/vendor.css" />
-    <link rel="stylesheet" href="css/app.css" />
+    <link rel="stylesheet" href="{!! asset('css/vendor.css') !!}" />
+    <link rel="stylesheet" href="{!! asset('css/app.css') !!}" />
 
     <!-- Scripts -->
     <script>
@@ -45,7 +45,7 @@
 </div>
 <!-- End wrapper-->
 
-<script src="js/app.js" type="text/javascript"></script>
+<script src="{!! asset('js/app.js') !!}" type="text/javascript"></script>
 
 @section('scripts')
 @show
