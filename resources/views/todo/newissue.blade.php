@@ -78,7 +78,7 @@
                             <div class="form-group">
                                 <label for="subject" class="col-sm-2 control-label">Тема</label>
                                 <div class="col-sm-6">
-                                    <input id="subject" type="text" class="form-control" name="subject" value="{{old('subject')}}">
+                                    <input id="subject" type="text" class="form-control" name="subject" value="{{ old('subject') }}">
                                 </div>
                             </div>
                             <div class="form-group">
@@ -86,7 +86,7 @@
                                 <div class="col-sm-6">
                                     <select id="department" class="form-control" name="department">
                                         @foreach($departments as $department)
-                                            <option value="{{ $department }}">{{ $department }}</option>
+                                            <option value="{{ $department->name }}">{{ $department->name }}</option>
                                         @endforeach
                                     </select>
                                 </div>
@@ -94,7 +94,7 @@
                             <div class="form-group">
                                 <label for="description" class="col-sm-2 control-label">Описание</label>
                                 <div class="col-sm-6">
-                                    <textarea id="description" class="form-control" rows="10" name="description"></textarea>
+                                    <textarea id="description" class="form-control" rows="10" name="description">{{ old('description') }}</textarea>
                                 </div>
                             </div>
                             <div class="form-group">

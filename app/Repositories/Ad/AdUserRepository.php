@@ -55,16 +55,8 @@ class AdUserRepository implements IUserRepository
      */
     public function getByAccount($account)
     {
-        try {
-            return $this->mapAdUserToUser($this->search()->findByOrFail('samaccountname', $account));
-        } catch (ModelNotFoundException $e) {
-            return FALSE;
-        }
-    }
-
-    public function findByComputer($computerName)
-    {
-        // TODO: Implement findByComputer() method.
+        $user = $this->search()->findBy('samaccountname', $account);
+        return $user ? $this->mapAdUserToUser($user) : null;
     }
 
     public function findByDepartment(Department $department)

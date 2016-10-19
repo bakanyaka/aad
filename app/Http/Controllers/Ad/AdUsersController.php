@@ -4,22 +4,20 @@ namespace App\Http\Controllers\Ad;
 
 use App\Http\Controllers\Controller;
 use App\Repositories\IUserRepository;
+use App\Services\SearchService;
 use Illuminate\Http\Request;
 
 class AdUsersController extends Controller
 {
-    /**
-     * @var IUserRepository
-     */
-    protected $users;
+    protected $search;
 
     /**
      * AdUsersController constructor.
-     * @param IUserRepository $userRepo
+     * @param SearchService $searchService
      */
-    public function __construct(IUserRepository $userRepo)
+    public function __construct(SearchService $searchService)
     {
-        $this->users = $userRepo;
+        $this->search = $searchService;
     }
 
     public function index()
@@ -28,8 +26,8 @@ class AdUsersController extends Controller
     }
 
     public function search(Request $request){
-        if (!empty($request->input('name'))) {
-            $result = $this->users->findByName($request->input('name'));
+        if ($request->has('q')) {
+            $result = $this->search ->findUser(trim($request->q));
             return response()->json($result);
         }
         return response()->json();

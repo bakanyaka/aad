@@ -32,6 +32,7 @@ class AppServiceProvider extends ServiceProvider
         $this->app->singleton('App\Repositories\IComputerRepository', 'App\Repositories\Ad\AdComputerRepository');
         $this->app->singleton('App\Repositories\IDepartmentRepository', 'App\Repositories\Ad\AdDepartmentRepository');
 
+        #Guzzle Http Client
         $this->app->bind('GuzzleHttp\Client', function ($app) {
             $guard = $this->app->make(Guard::class);
             $todoApiKey = $guard->user()->todo_api_key;
@@ -40,5 +41,7 @@ class AppServiceProvider extends ServiceProvider
                 'headers' =>['X-Redmine-API-Key' => $todoApiKey]
            ]);
         });
+
+
     }
 }

@@ -95,10 +95,10 @@
                 }
                 this.showTable = false;
                 this.loading = true;
-                this.$http.get('/users/search?name=' + this.searchText).then((response) => {
+                this.$http.get('/users/search?q=' + this.searchText).then((response) => {
                     this.showTable = true;
                     this.loading = false;
-                    this.users = response.body;
+                    this.users = Array.isArray(response.body) ? response.body : [response.body];
                 })
             }
         }

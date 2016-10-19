@@ -31,7 +31,8 @@ class AdComputerRepository implements IComputerRepository
 
     public function findByName($name)
     {
-        // TODO: Implement findByName() method.
+        $computer = $this->search()->find($name);
+        return $computer ? $this->mapAdComputerToComputer($computer) : null;
     }
 
     public function findByUsername($username)
