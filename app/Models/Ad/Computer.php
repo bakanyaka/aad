@@ -11,7 +11,7 @@ class Computer
     public $os;
     public $lastComputerLogonDate;
     public $lastComputerLogonDateUnix;
-    public $lastUser;
+    public $lastUserAccount;
     public $lastUserLogonDate;
     public $knownUsers = array();
     public $cpu;

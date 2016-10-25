@@ -36,6 +36,8 @@ class SearchService
             return $this->findUserByComputer($query);
         } elseif (preg_match('/^([a-z]{0,5}\d{4,6})/',$query,$matches)) {
             return $this->users->getByAccount($matches[1]);
+        } elseif (preg_match('/^(?:[\+\(\)\d\s])*\d+(?:-\d+)+$/', $query)) {
+            return $this->users->findByPhone($query);
         } else {
             return $this->users->findByName($query);
         }
@@ -44,8 +46,9 @@ class SearchService
     public function findUserByComputer($computerName)
     {
         $computer = $this->computers->findByName($computerName);
-        dd($computer);
+        if (!$computer || !$computer->lastUserAccount) {
+            return null;
+        }
+        return $this->users->getByAccount($computer->lastUserAccount);
     }
-
-
 }

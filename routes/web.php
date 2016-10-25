@@ -25,6 +25,7 @@ Route::group(['middleware' => ['auth','admin']], function () {
     //AD Users Routes
     Route::get('users', 'Ad\AdUsersController@index')->name('users');
     Route::get('users/search','Ad\AdUsersController@search');
+    Route::get('computers', 'Ad\AdComputersController@index')->name('computers');
     Route::get('computers/search', 'Ad\AdComputersController@search');
     //Redmine Routes
     Route::get('todo/issues/new', 'Todo\TodoIssuesController@create');

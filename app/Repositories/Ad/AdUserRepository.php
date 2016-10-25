@@ -64,6 +64,16 @@ class AdUserRepository implements IUserRepository
         // TODO: Implement findByDepartment() method.
     }
 
+    public function findByPhone(string $phone) {
+        return $this->search()
+            ->orWhereContains('telephonenumber', $phone)
+            ->orWhereContains('pager', $phone)
+            ->orWhereContains('mobile', $phone)
+            ->get()->map(function ($adUser){
+                return $this->mapAdUserToUser($adUser);
+            });
+    }
+
     public function where($field, $value, $equality = 'orcontains')
     {
 
