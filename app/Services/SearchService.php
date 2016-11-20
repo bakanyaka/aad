@@ -39,7 +39,7 @@ class SearchService
         } elseif (preg_match('/^(?:[\+\(\)\d\s])*\d+(?:-\d+)+$/', $query)) {
             return $this->users->findByPhone($query);
         } else {
-            return $this->users->findByName($query);
+            return $this->users->findByName($query)->sortBy('name')->values();
         }
     }
 
