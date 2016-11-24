@@ -119,6 +119,18 @@ module.exports = function (options) {
         },
 
         /*
+         * Sass loader support for .scss files
+         *
+         * See: https://github.com/jtangelder/sass-loader
+         */
+
+
+
+        { test: /\.scss$/, loaders: ['raw-loader', 'sass-loader'] },
+
+        { test: /\.(woff2?|ttf|eot|svg)$/, loader: 'url?limit=10000&name=[name].[ext]' },
+
+        /*
          * to string and css loader support for *.css files
          * Returns file content as string
          *

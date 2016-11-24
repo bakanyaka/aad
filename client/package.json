@@ -1,15 +1,7 @@
 {
-  "name": "angular2-webpack-starter",
-  "version": "5.1.1",
-  "description": "An Angular 2 Webpack Starter kit featuring Angular 2 (Router, Http, Forms, Services, Tests, E2E, Coverage), Karma, Protractor, Jasmine, Istanbul, TypeScript, and Webpack by AngularClass",
-  "keywords": [
-    "angular2",
-    "webpack",
-    "typescript"
-  ],
-  "author": "Patrick Stapleton <patrick@angularclass.com>",
-  "homepage": "https://github.com/angularclass/angular2-webpack-starter",
-  "license": "MIT",
+  "name": "ArsenalAdminDashboard",
+  "version": "0.0.1",
+  "description": "Arsenal Admin Dashboard Angular 2 Client App",
   "scripts": {
     "build:dev": "webpack --config config/webpack.dev.js --progress --profile",
     "build:docker": "npm run build:prod && docker build -t angular2-webpack-start:latest .",
@@ -72,7 +64,9 @@
     "@angularclass/hmr": "~1.2.2",
     "@angularclass/hmr-loader": "~3.0.2",
     "assets-webpack-plugin": "^3.4.0",
+    "bootstrap-sass": "^3.3.7",
     "core-js": "^2.4.1",
+    "font-awesome": "^4.7.0",
     "http-server": "^0.9.0",
     "ie-shim": "^0.1.0",
     "rxjs": "5.0.0-beta.12",
@@ -109,10 +103,12 @@
     "karma-remap-coverage": "^0.1.1",
     "karma-sourcemap-loader": "^0.3.7",
     "karma-webpack": "1.8.0",
+    "node-sass": "^3.13.0",
     "parse5": "^2.2.2",
     "protractor": "^4.0.9",
     "raw-loader": "0.5.1",
     "rimraf": "~2.5.4",
+    "sass-loader": "^4.0.2",
     "script-ext-html-webpack-plugin": "^1.3.2",
     "source-map-loader": "^0.1.5",
     "string-replace-loader": "1.0.5",
@@ -120,7 +116,7 @@
     "to-string-loader": "^1.1.4",
     "ts-helpers": "1.1.2",
     "ts-node": "^1.7.0",
-    "tslint": "~4.0.0",
+    "tslint": "3.15.1",
     "tslint-loader": "^2.1.3",
     "typedoc": "^0.5.0",
     "typescript": "^2.0.6",
@@ -131,13 +127,6 @@
     "webpack-dev-server": "2.1.0-beta.11",
     "webpack-md5-hash": "^0.0.5",
     "webpack-merge": "~0.17.0"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/angularclass/angular2-webpack-starter.git"
-  },
-  "bugs": {
-    "url": "https://github.com/angularclass/angular2-webpack-starter/issues"
   },
   "engines": {
     "node": ">= 4.2.1",
