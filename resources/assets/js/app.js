@@ -7,17 +7,37 @@
 
 require('./bootstrap');
 
-/**
- * Next, we will create a fresh Vue application instance and attach it to
- * the body of the page. From here, you may begin adding components to
- * the application, or feel free to tweak this setup for your needs.
- */
 
-Vue.component('ad-user-list', require('./components/ad-user-list.vue'));
+import Vue from 'vue';
+import VueRouter from 'vue-router'
+import VueResource from 'vue-resource'
+import App from './App.vue'
+import {routes} from './routes'
+
+
+Vue.use(VueResource);
+Vue.use(VueRouter);
+
+const router = new VueRouter({routes});
 
 const app = new Vue({
-    el: '#wrapper'
+    el: '#app',
+    router,
+    render: h => h(App)
 });
+
+/**
+ * We'll register a HTTP interceptor to attach the "CSRF" header to each of
+ * the outgoing requests issued by this application. The CSRF middleware
+ * included with Laravel will automatically verify the header's value.
+ */
+
+Vue.http.interceptors.push((request, next) => {
+    request.headers['X-CSRF-TOKEN'] = Laravel.csrfToken;
+
+    next();
+});
+
 
 /*
  *

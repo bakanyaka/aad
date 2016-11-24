@@ -21,29 +21,7 @@
 </head>
 <body>
 
-<!-- Wrapper-->
-<div id="wrapper">
-
-    <!-- Navigation -->
-    @include('layouts.navigation')
-
-    <!-- Page wraper -->
-    <div id="page-wrapper" class="gray-bg">
-
-        <!-- Page wrapper -->
-        @include('layouts.topnavbar')
-
-        <!-- Main view  -->
-        @yield('content')
-
-        <!-- Footer -->
-        @include('layouts.footer')
-
-    </div>
-    <!-- End page wrapper-->
-
-</div>
-<!-- End wrapper-->
+<div id="app"></div>
 
 <script src="{!! asset('js/app.js') !!}" type="text/javascript"></script>
 

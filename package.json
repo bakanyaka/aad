@@ -18,5 +18,8 @@
     "metismenu": "^2.5.2",
     "vue": "^2.0.2",
     "vue-resource": "^1.0.3"
+  },
+  "dependencies": {
+    "vue-router": "^2.0.3"
   }
 }
