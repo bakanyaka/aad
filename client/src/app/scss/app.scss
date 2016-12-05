@@ -8,13 +8,16 @@
 // Fonts
 @import url("https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700&lang=en");
 
-// Bootstrap
-@import "node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
 
 
 // Variables, Mixins
 @import "import/variables";
 @import "import/mixins";
+
+// Bootstrap
+@import "node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
+@import "node_modules/font-awesome/scss/font-awesome";
+
 
 // INSPINIA Theme Elements
 @import "import/typography";
@@ -61,3 +64,5 @@
     margin: 0;
   }
 }
+
+
